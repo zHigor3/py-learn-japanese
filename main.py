@@ -3,7 +3,7 @@ from runGame import runGame
 
 def main() -> None:
    """Ponto de entrada do programa."""
-   options = ["hiragana", "katakana", "sair"]
+   options = ["hiragana", "katakana", "todos", "sair"]
    question = [
       inquirer.List(
          "escolha",

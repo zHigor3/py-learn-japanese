@@ -12,8 +12,16 @@ class AlphabetTrainer():
    # Carrega o alfabeto escolhido
    def loadAlphabet(self) -> None:
       try:
-         with open(f'./assets/{self.option}.json', 'r', encoding='utf-8') as file:
-            self.alphabet = json.load(file)
+         if self.option == 'todos':
+            with open(f'./assets/hiragana.json', 'r', encoding='utf-8') as file:
+               self.alphabet = json.load(file)
+            
+            with open(f'./assets/katakana.json', 'r', encoding='utf-8') as file:
+               self.alphabet += json.load(file)
+
+         else:
+            with open(f'./assets/{self.option}.json', 'r', encoding='utf-8') as file:
+               self.alphabet = json.load(file)
 
       except FileNotFoundError:
          print(f"Erro: O arquivo './assets/{self.option}.json' não foi encontrado.")
@@ -56,8 +64,10 @@ class AlphabetTrainer():
       print("Total acertado: ")
       correctStr = ', '.join(f"{i['latter']} - {i['sound']}" for i in self.correctList)
       print(correctStr if correctStr else "Nenhuma resposta correta até agora.")
+      # print(len(self.correctList) if len(self.correctList) > 0 else "Nenhuma resposta correta até agora.")
 
       print("\nTotal de erros: ")
       wrongStr = ', '.join(f"{i['latter']} - {i['sound']}" for i in self.wrongList)
       print(wrongStr if wrongStr else "Nenhum erro até agora.")
+      # print(len(self.wrongList) if len(self.wrongList) > 0 else "Nenhum erro até agora.")
       print()

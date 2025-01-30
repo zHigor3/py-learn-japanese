@@ -32,7 +32,7 @@ def runGame(option: str) -> None:
       print(f"Acertos: {len(game.correctList)}")
       print(f"Erros: {len(game.wrongList)}")
 
-   if len(game.correctList) > len(game.wrongList):
+   elif len(game.correctList) > len(game.wrongList):
       print(f"Parabéns! você acertou a maior parte das letras!")
 
       if elapsed_time <= 240: 
